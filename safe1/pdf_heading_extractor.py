@@ -71,13 +71,13 @@ class PDFHeadingExtractor:
     def load_models(self):
         """Load the trained models and preprocessors"""
         try:
-            print(f"📦 Loading models...")
+            print(f"[LOAD] Loading models...")
             self.model = joblib.load(self.model_path)
             self.preprocessor = joblib.load(self.preprocessor_path)
             self.label_encoder = joblib.load(self.label_encoder_path)
-            print(f"✅ Models loaded successfully!")
+            print(f"[OK] Models loaded successfully!")
         except Exception as e:
-            print(f"❌ Error loading models: {e}")
+            print(f"[ERROR] Error loading models: {e}")
             sys.exit(1)
     
     def extract_text_with_metadata(self, pdf_path: str) -> List[Dict]:
@@ -112,7 +112,7 @@ class PDFHeadingExtractor:
             doc.close()
             
         except Exception as e:
-            print(f"❌ Error extracting text from {pdf_path}: {e}")
+            print(f"[ERROR] Error extracting text from {pdf_path}: {e}")
             return []
             
         return text_blocks
@@ -206,7 +206,7 @@ class PDFHeadingExtractor:
         df_result['prob_h1_original'] = df_result['prob_h1'].copy()
         
         # APPLY RULE-BASED ENHANCEMENTS
-        print("🎯 Applying simplified percentile-based constraints...")
+        print("[TARGET] Applying simplified percentile-based constraints...")
         
         # Calculate page statistics
         page_stats = df_result.groupby('page_number').agg({
@@ -222,7 +222,7 @@ class PDFHeadingExtractor:
         height_percentiles = df_result['bbox_height'].quantile([0.60, 0.85]).to_dict()
         width_percentiles = df_result['bbox_width'].quantile([0.60, 0.85]).to_dict()
         
-        print(f"📊 PDF Bbox Percentiles:")
+        print(f"[STATS] PDF Bbox Percentiles:")
         print(f"   Height: 60th={height_percentiles[0.60]:.1f}, 85th={height_percentiles[0.85]:.1f}")
         print(f"   Width:  60th={width_percentiles[0.60]:.1f}, 85th={width_percentiles[0.85]:.1f}")
         
@@ -359,7 +359,7 @@ class PDFHeadingExtractor:
             'area': float(row['bbox_width'] * row['bbox_height'])
         }, axis=1)
         
-        print("✅ Rule-based enhancements applied!")
+        print("[OK] Rule-based enhancements applied!")
         
         # Print enhancement statistics
         enhanced_count = len([r for r in enhancement_reasons if r != "none"])
@@ -369,7 +369,7 @@ class PDFHeadingExtractor:
         bbox_near_60th_enhancements = len([r for r in enhancement_reasons if "bbox_near_60th" in r])
         bbox_45th_60th_enhancements = len([r for r in enhancement_reasons if "bbox_45th-60th" in r])
         
-        print(f"📊 Enhanced {enhanced_count} predictions with simplified percentile-based constraints")
+        print(f"[STATS] Enhanced {enhanced_count} predictions with simplified percentile-based constraints")
         print(f"   - Top position boosts (+0.1): {top_enhancements}")
         print(f"   - >85th percentile bbox (+0.4): {bbox_85th_enhancements}")
         print(f"   - 60th-85th percentile bbox (-0.075): {bbox_60th_85th_enhancements}")
@@ -391,7 +391,7 @@ class PDFHeadingExtractor:
         Returns:
             Dict: Processing results
         """
-        print(f"🚀 Processing PDF: {Path(pdf_path).name}")
+        print(f"[START] Processing PDF: {Path(pdf_path).name}")
         print("=" * 60)
         
         # Step 1: Extract text with metadata
@@ -422,11 +422,11 @@ class PDFHeadingExtractor:
         titles = high_confidence[high_confidence['predicted_class'] == 'title']
         h1_headings = high_confidence[high_confidence['predicted_class'] == 'h1']
         
-        print(f"📊 Processing Results:")
-        print(f"   🎯 Total text blocks: {len(df_with_predictions):,}")
-        print(f"   📈 High confidence predictions: {len(high_confidence):,}")
-        print(f"   🏆 Titles: {len(titles)}")
-        print(f"   📋 H1 headings: {len(h1_headings)}")
+        print(f"[STATS] Processing Results:")
+        print(f"   [TARGET] Total text blocks: {len(df_with_predictions):,}")
+        print(f"   [CHART] High confidence predictions: {len(high_confidence):,}")
+        print(f"   [?] Titles: {len(titles)}")
+        print(f"   [RESULT] H1 headings: {len(h1_headings)}")
         
         # Calculate enhancement statistics
         enhancement_reasons = df_with_predictions['enhancement_reasons']
@@ -521,11 +521,11 @@ class PDFHeadingExtractor:
         pdf_files = list(folder_path.glob("*.pdf"))
         
         if not pdf_files:
-            print(f"❌ No PDF files found in {folder_path}")
+            print(f"[ERROR] No PDF files found in {folder_path}")
             return
         
-        print(f"🚀 Processing {len(pdf_files)} PDF files from {folder_path}")
-        print(f"📁 Output folder: {output_folder}")
+        print(f"[START] Processing {len(pdf_files)} PDF files from {folder_path}")
+        print(f"[FOLDER] Output folder: {output_folder}")
         print("=" * 70)
         
         processed_count = 0
@@ -533,14 +533,14 @@ class PDFHeadingExtractor:
         
         for pdf_file in pdf_files:
             try:
-                print(f"\n📄 Processing: {pdf_file.name}")
+                print(f"\n[FILE] Processing: {pdf_file.name}")
                 
                 # Process the PDF
                 results = self.process_pdf(str(pdf_file), confidence_threshold, 
                                          normal_confidence_threshold)
                 
                 if 'error' in results:
-                    print(f"❌ Failed to process {pdf_file.name}: {results['error']}")
+                    print(f"[ERROR] Failed to process {pdf_file.name}: {results['error']}")
                     failed_count += 1
                     continue
                 
@@ -552,19 +552,19 @@ class PDFHeadingExtractor:
                 with open(output_path, 'w', encoding='utf-8') as f:
                     json.dump(results, f, indent=2, ensure_ascii=False, cls=NumpyEncoder)
                 
-                print(f"✅ Saved results to: {output_filename}")
-                print(f"   📋 Found {results['h1_headings']['count']} H1 headings and {results['titles']['count']} titles")
+                print(f"[OK] Saved results to: {output_filename}")
+                print(f"   [RESULT] Found {results['h1_headings']['count']} H1 headings and {results['titles']['count']} titles")
                 
                 processed_count += 1
                 
             except Exception as e:
-                print(f"❌ Error processing {pdf_file.name}: {e}")
+                print(f"[ERROR] Error processing {pdf_file.name}: {e}")
                 failed_count += 1
         
-        print(f"\n🎉 BATCH PROCESSING COMPLETE!")
-        print(f"   ✅ Successfully processed: {processed_count} files")
-        print(f"   ❌ Failed: {failed_count} files")
-        print(f"   📁 Results saved in: {output_folder}")
+        print(f"\n[COMPLETE] BATCH PROCESSING COMPLETE!")
+        print(f"   [OK] Successfully processed: {processed_count} files")
+        print(f"   [ERROR] Failed: {failed_count} files")
+        print(f"   [FOLDER] Results saved in: {output_folder}")
 
 def main():
     """Main function for command line usage"""
@@ -593,11 +593,11 @@ def main():
     
     if input_path.is_file() and input_path.suffix.lower() == '.pdf':
         # Process single PDF file
-        print(f"🎯 Processing single PDF file: {input_path}")
+        print(f"[TARGET] Processing single PDF file: {input_path}")
         results = extractor.process_pdf(str(input_path), args.confidence, args.normal_confidence)
         
         if 'error' in results:
-            print(f"❌ Error: {results['error']}")
+            print(f"[ERROR] Error: {results['error']}")
             return
         
         # Save results
@@ -611,15 +611,15 @@ def main():
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(results, f, indent=2, ensure_ascii=False, cls=NumpyEncoder)
         
-        print(f"\n✅ Results saved to: {output_path}")
-        print(f"📋 Found {results['h1_headings']['count']} H1 headings and {results['titles']['count']} titles")
+        print(f"\n[OK] Results saved to: {output_path}")
+        print(f"[RESULT] Found {results['h1_headings']['count']} H1 headings and {results['titles']['count']} titles")
         
     elif input_path.is_dir():
         # Process folder of PDF files
         extractor.process_folder(str(input_path), args.output, args.confidence, args.normal_confidence)
         
     else:
-        print(f"❌ Invalid input: {input_path} (must be PDF file or directory)")
+        print(f"[ERROR] Invalid input: {input_path} (must be PDF file or directory)")
         return
 
 if __name__ == "__main__":

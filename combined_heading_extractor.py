@@ -61,7 +61,7 @@ class CombinedHeadingExtractor:
         Returns:
             Dict: Safe1 extraction results
         """
-        print("🚀 Running Safe1 Model (Title and H1 extraction)...")
+        print("[START] Running Safe1 Model (Title and H1 extraction)...")
         print("=" * 60)
         
         # Create safe1 output directory
@@ -72,7 +72,7 @@ class CombinedHeadingExtractor:
         existing_output = self.safe1_dir / "output" / "South of France - Cities_headings_20250728_044338.json"
         
         if existing_output.exists() and "South of France" in str(pdf_path):
-            print("🔄 Using existing Safe1 output for South of France PDF...")
+            print("[PROCESS] Using existing Safe1 output for South of France PDF...")
             # Copy existing output to our directory
             safe1_result_path = safe1_output_dir / f"safe1_{Path(pdf_path).stem}_result.json"
             shutil.copy2(existing_output, safe1_result_path)
@@ -81,7 +81,7 @@ class CombinedHeadingExtractor:
             with open(safe1_result_path, 'r', encoding='utf-8') as f:
                 safe1_results = json.load(f)
             
-            print(f"📊 Safe1 Results Summary:")
+            print(f"[STATS] Safe1 Results Summary:")
             print(f"   - Titles found: {safe1_results.get('titles', {}).get('count', 0)}")
             print(f"   - H1 headings found: {safe1_results.get('h1_headings', {}).get('count', 0)}")
             
@@ -110,20 +110,20 @@ class CombinedHeadingExtractor:
                 "-c", "0.55"  # confidence threshold
             ]
             
-            print(f"📝 Running command: {' '.join(cmd)}")
+            print(f"[LOG] Running command: {' '.join(cmd)}")
             # Run from safe1 directory to ensure relative output path works
             result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.safe1_dir.resolve()), encoding='utf-8', errors='replace')
             
             if result.returncode != 0:
-                print(f"❌ Safe1 extractor failed: {result.stderr}")
-                print("🔄 Attempting to use existing output files...")
+                print(f"[ERROR] Safe1 extractor failed: {result.stderr}")
+                print("[PROCESS] Attempting to use existing output files...")
                 
                 # Find any existing output JSON files
                 output_files = list((self.safe1_dir / "output").glob("*.json"))
                 if output_files:
                     # Get the most recent output file
                     latest_output = max(output_files, key=lambda x: x.stat().st_mtime)
-                    print(f"📄 Using existing output: {latest_output.name}")
+                    print(f"[FILE] Using existing output: {latest_output.name}")
                     
                     # Copy to our output directory
                     safe1_result_path = safe1_output_dir / f"safe1_{pdf_path.stem}_result.json"
@@ -133,7 +133,7 @@ class CombinedHeadingExtractor:
                     with open(safe1_result_path, 'r', encoding='utf-8') as f:
                         safe1_results = json.load(f)
                     
-                    print(f"📊 Safe1 Results Summary:")
+                    print(f"[STATS] Safe1 Results Summary:")
                     print(f"   - Titles found: {safe1_results.get('titles', {}).get('count', 0)}")
                     print(f"   - H1 headings found: {safe1_results.get('h1_headings', {}).get('count', 0)}")
                     
@@ -144,7 +144,7 @@ class CombinedHeadingExtractor:
                 else:
                     raise RuntimeError(f"Safe1 extractor failed and no existing outputs found: {result.stderr}")
             
-            print("✅ Safe1 extraction completed!")
+            print("[OK] Safe1 extraction completed!")
             print(result.stdout)
             
             # Find the output JSON file
@@ -163,7 +163,7 @@ class CombinedHeadingExtractor:
             with open(safe1_result_path, 'r', encoding='utf-8') as f:
                 safe1_results = json.load(f)
             
-            print(f"📊 Safe1 Results Summary:")
+            print(f"[STATS] Safe1 Results Summary:")
             print(f"   - Titles found: {safe1_results.get('titles', {}).get('count', 0)}")
             print(f"   - H1 headings found: {safe1_results.get('h1_headings', {}).get('count', 0)}")
             
@@ -188,7 +188,7 @@ class CombinedHeadingExtractor:
         Returns:
             Dict: Safe2 extraction results
         """
-        print("\n🚀 Running Safe2 Model (Title, H1, H2, H3 extraction)...")
+        print("\n[START] Running Safe2 Model (Title, H1, H2, H3 extraction)...")
         print("=" * 60)
         
         # Create safe2 output directory
@@ -201,7 +201,7 @@ class CombinedHeadingExtractor:
         existing_output = self.safe2_dir / "test_output.json"
         
         if existing_output.exists() and "South of France" in str(pdf_path):
-            print("🔄 Using existing Safe2 output for South of France PDF...")
+            print("[PROCESS] Using existing Safe2 output for South of France PDF...")
             # Copy existing output to our directory
             safe2_result_path = safe2_output_dir / f"safe2_{pdf_path.stem}_result.json"
             shutil.copy2(existing_output, safe2_result_path)
@@ -210,7 +210,7 @@ class CombinedHeadingExtractor:
             with open(safe2_result_path, 'r', encoding='utf-8') as f:
                 safe2_results = json.load(f)
             
-            print(f"📊 Safe2 Results Summary:")
+            print(f"[STATS] Safe2 Results Summary:")
             headings = safe2_results.get('results', {}).get('headings', [])
             heading_counts = {}
             for heading in headings:
@@ -236,15 +236,15 @@ class CombinedHeadingExtractor:
                 "--confidence_threshold", "0.5"
             ]
             
-            print(f"📝 Running command: {' '.join(cmd)}")
+            print(f"[LOG] Running command: {' '.join(cmd)}")
             # Run from safe2 directory to ensure any relative paths work
             result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.safe2_dir.resolve()), encoding='utf-8', errors='replace')
             
             if result.returncode != 0:
-                print(f"❌ Safe2 extractor failed: {result.stderr}")
+                print(f"[ERROR] Safe2 extractor failed: {result.stderr}")
                 raise RuntimeError(f"Safe2 extractor failed: {result.stderr}")
             
-            print("✅ Safe2 extraction completed!")
+            print("[OK] Safe2 extraction completed!")
             print(result.stdout)
             
             # Load and return the results
@@ -254,7 +254,7 @@ class CombinedHeadingExtractor:
             with open(output_json, 'r', encoding='utf-8') as f:
                 safe2_results = json.load(f)
             
-            print(f"📊 Safe2 Results Summary:")
+            print(f"[STATS] Safe2 Results Summary:")
             headings = safe2_results.get('results', {}).get('headings', [])
             heading_counts = {}
             for heading in headings:
@@ -270,7 +270,7 @@ class CombinedHeadingExtractor:
             }
         
         except Exception as e:
-            print(f"❌ Safe2 processing failed: {e}")
+            print(f"[ERROR] Safe2 processing failed: {e}")
             raise e
     
     def combine_results(self, safe1_data: Dict, safe2_data: Dict, pdf_path: str) -> Dict:
@@ -285,7 +285,7 @@ class CombinedHeadingExtractor:
         Returns:
             Dict: Combined hierarchical results
         """
-        print("\n🔗 Combining results hierarchically...")
+        print("\n[COMBINE] Combining results hierarchically...")
         print("=" * 60)
         
         safe1_results = safe1_data['results']
@@ -307,9 +307,9 @@ class CombinedHeadingExtractor:
         for heading in safe2_headings:
             heading_text = heading['text'].strip()
             if heading_text in safe1_h1_texts:
-                print(f"⚠️  Removing duplicate H2/H3 from safe2: '{heading_text}' (already H1 in safe1)")
+                print(f"[?][?]  Removing duplicate H2/H3 from safe2: '{heading_text}' (already H1 in safe1)")
             elif heading_text in safe1_title_texts:
-                print(f"⚠️  Removing duplicate H2/H3 from safe2: '{heading_text}' (already title in safe1)")
+                print(f"[?][?]  Removing duplicate H2/H3 from safe2: '{heading_text}' (already title in safe1)")
             else:
                 filtered_safe2_headings.append(heading)
         
@@ -317,7 +317,7 @@ class CombinedHeadingExtractor:
         safe2_h2_headings = [h for h in filtered_safe2_headings if h.get('type') == 'h2']
         safe2_h3_headings = [h for h in filtered_safe2_headings if h.get('type') == 'h3']
         
-        print(f"📊 Input Summary:")
+        print(f"[STATS] Input Summary:")
         print(f"   From Safe1: {len(titles)} titles, {len(h1_headings)} H1s (all preserved)")
         print(f"   From Safe2: {len(safe2_headings)} headings -> {len(filtered_safe2_headings)} after filtering")
         print(f"   Final Safe2: {len(safe2_h2_headings)} H2s, {len(safe2_h3_headings)} H3s")
@@ -363,7 +363,7 @@ class CombinedHeadingExtractor:
             else:
                 next_h1_page = float('inf')  # Last H1, include all remaining pages
             
-            print(f"🔍 Processing H1: '{h1['text']}' (page {current_page})")
+            print(f"[SEARCH] Processing H1: '{h1['text']}' (page {current_page})")
             print(f"   Page range: {current_page} to {next_h1_page if next_h1_page != float('inf') else 'end'}")
             
             # Find ALL H2s and H3s in the page range for this H1
@@ -490,7 +490,7 @@ class CombinedHeadingExtractor:
             'hierarchical_structure': combined_structure
         }
         
-        print(f"🎯 Applying post-processing constraints...")
+        print(f"[TARGET] Applying post-processing constraints...")
         
         # Apply text constraints (colon truncation, etc.)
         combined_result = self.apply_text_constraints(combined_result)
@@ -498,8 +498,8 @@ class CombinedHeadingExtractor:
         # Apply hierarchical constraints (promote orphaned H3s)
         combined_result = self.promote_orphaned_h3s(combined_result)
         
-        print(f"✅ Combination completed!")
-        print(f"📊 Combined Structure Summary:")
+        print(f"[OK] Combination completed!")
+        print(f"[STATS] Combined Structure Summary:")
         print(f"   - Total sections: {combined_result['summary']['total_sections']}")
         print(f"   - Titles: {combined_result['summary']['titles']}")
         print(f"   - H1 sections: {combined_result['summary']['h1_sections']}")
@@ -545,7 +545,7 @@ class CombinedHeadingExtractor:
                 
             # 2. Handle bold text truncation (remove text after bold indicators)
             # Remove common bold formatting artifacts
-            bold_indicators = [' :', ' -', ' –', ' —']
+            bold_indicators = [' :', ' -', ' [?]', ' [?]']
             for indicator in bold_indicators:
                 if indicator in text:
                     text = text.split(indicator)[0].strip()
@@ -597,8 +597,8 @@ class CombinedHeadingExtractor:
             
             section['subsections'] = subsections_to_keep
         
-        print(f"   ✅ Cleaned text for {cleaned_count} H2/H3 headings (H1s preserved)")
-        print(f"   ✅ Removed {removed_count} H2/H3 headings (lowercase start + >6 words)")
+        print(f"   [OK] Cleaned text for {cleaned_count} H2/H3 headings (H1s preserved)")
+        print(f"   [OK] Removed {removed_count} H2/H3 headings (lowercase start + >6 words)")
         return combined_result
     
     def promote_orphaned_h3s(self, combined_result: Dict) -> Dict:
@@ -649,7 +649,7 @@ class CombinedHeadingExtractor:
                            for s in combined_result['hierarchical_structure'])
         }
         
-        print(f"   ✅ Promoted {promoted_count} orphaned H3s to H2s")
+        print(f"   [OK] Promoted {promoted_count} orphaned H3s to H2s")
         return combined_result
     
     def convert_to_flat_outline(self, combined_result: Dict) -> Dict:
@@ -708,7 +708,7 @@ class CombinedHeadingExtractor:
             "outline": outline
         }
         
-        print(f"✅ Converted to flat outline format:")
+        print(f"[OK] Converted to flat outline format:")
         print(f"   - Title: {title}")
         print(f"   - Total outline items: {len(outline)}")
         
@@ -743,7 +743,7 @@ class CombinedHeadingExtractor:
         with open(hierarchical_path, 'w', encoding='utf-8') as f:
             json.dump(combined_result, f, indent=2, ensure_ascii=False)
         
-        print(f"\n💾 Hierarchical results saved to: {hierarchical_path}")
+        print(f"\n[SAVE] Hierarchical results saved to: {hierarchical_path}")
         
         # Convert to flat outline format
         flat_outline = self.convert_to_flat_outline(combined_result)
@@ -755,7 +755,7 @@ class CombinedHeadingExtractor:
         with open(outline_path, 'w', encoding='utf-8') as f:
             json.dump(flat_outline, f, indent=2, ensure_ascii=False)
         
-        print(f"💾 Flat outline saved to: {outline_path}")
+        print(f"[SAVE] Flat outline saved to: {outline_path}")
         return str(outline_path)
     
     def process_pdf(self, pdf_path: str) -> str:
@@ -768,9 +768,9 @@ class CombinedHeadingExtractor:
         Returns:
             str: Path to the combined output file
         """
-        print(f"🎯 Starting Combined Heading Extraction Pipeline")
-        print(f"📄 PDF: {Path(pdf_path).name}")
-        print(f"📁 Output Directory: {self.output_dir}")
+        print(f"[TARGET] Starting Combined Heading Extraction Pipeline")
+        print(f"[FILE] PDF: {Path(pdf_path).name}")
+        print(f"[FOLDER] Output Directory: {self.output_dir}")
         print("=" * 80)
         
         try:
@@ -786,16 +786,16 @@ class CombinedHeadingExtractor:
             # Step 4: Save combined results
             output_path = self.save_combined_results(combined_result, pdf_path)
             
-            print("\n🎉 PROCESSING COMPLETE!")
+            print("\n[COMPLETE] PROCESSING COMPLETE!")
             print("=" * 80)
-            print(f"✅ Successfully processed: {Path(pdf_path).name}")
-            print(f"📁 All outputs saved in: {self.output_dir}")
-            print(f"🔗 Main output (flat outline): {output_path}")
+            print(f"[OK] Successfully processed: {Path(pdf_path).name}")
+            print(f"[FOLDER] All outputs saved in: {self.output_dir}")
+            print(f"[COMBINE] Main output (flat outline): {output_path}")
             
             return output_path
             
         except Exception as e:
-            print(f"\n❌ Processing failed: {e}")
+            print(f"\n[ERROR] Processing failed: {e}")
             raise
 
 def main():
@@ -813,7 +813,7 @@ def main():
     
     # Verify PDF exists
     if not Path(args.pdf_path).exists():
-        print(f"❌ PDF file not found: {args.pdf_path}")
+        print(f"[ERROR] PDF file not found: {args.pdf_path}")
         sys.exit(1)
     
     try:
@@ -827,11 +827,11 @@ def main():
         # Process PDF
         output_path = extractor.process_pdf(args.pdf_path)
         
-        print(f"\n📋 View your results:")
+        print(f"\n[RESULT] View your results:")
         print(f"   Combined output: {output_path}")
         
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"[ERROR] Error: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

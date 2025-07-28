@@ -29,7 +29,7 @@ try:
     PDF_LIBRARIES_AVAILABLE = True
 except ImportError:
     PDF_LIBRARIES_AVAILABLE = False
-    print("⚠️  PDF libraries not found. Install with: pip install pymupdf pdfplumber")
+    print("[?][?]  PDF libraries not found. Install with: pip install pymupdf pdfplumber")
 
 # ML libraries
 try:
@@ -41,7 +41,7 @@ try:
     ML_LIBRARIES_AVAILABLE = True
 except ImportError:
     ML_LIBRARIES_AVAILABLE = False
-    print("⚠️  ML libraries not found. Install with: pip install xgboost scikit-learn scipy joblib")
+    print("[?][?]  ML libraries not found. Install with: pip install xgboost scikit-learn scipy joblib")
 
 import re
 from datetime import datetime
@@ -67,14 +67,14 @@ class PDFHeadingExtractor:
     def load_models(self):
         """Load all trained model components."""
         try:
-            print("🔄 Loading trained models...")
+            print("[PROCESS] Loading trained models...")
             
             # Load XGBoost model
             model_path = os.path.join(self.models_dir, 'pdf_heading_classifier.json')
             if os.path.exists(model_path):
                 self.model = xgb.XGBClassifier()
                 self.model.load_model(model_path)
-                print(f"✅ Loaded XGBoost model from {model_path}")
+                print(f"[OK] Loaded XGBoost model from {model_path}")
             else:
                 raise FileNotFoundError(f"Model file not found: {model_path}")
             
@@ -82,7 +82,7 @@ class PDFHeadingExtractor:
             tfidf_path = os.path.join(self.models_dir, 'tfidf_vectorizer.pkl')
             if os.path.exists(tfidf_path):
                 self.tfidf = joblib.load(tfidf_path)
-                print(f"✅ Loaded TF-IDF vectorizer from {tfidf_path}")
+                print(f"[OK] Loaded TF-IDF vectorizer from {tfidf_path}")
             else:
                 raise FileNotFoundError(f"TF-IDF vectorizer not found: {tfidf_path}")
             
@@ -90,7 +90,7 @@ class PDFHeadingExtractor:
             encoder_path = os.path.join(self.models_dir, 'label_encoder.pkl')
             if os.path.exists(encoder_path):
                 self.label_encoder = joblib.load(encoder_path)
-                print(f"✅ Loaded label encoder from {encoder_path}")
+                print(f"[OK] Loaded label encoder from {encoder_path}")
             else:
                 raise FileNotFoundError(f"Label encoder not found: {encoder_path}")
             
@@ -99,9 +99,9 @@ class PDFHeadingExtractor:
             if os.path.exists(features_path):
                 with open(features_path, 'r') as f:
                     self.metadata_features = [line.strip() for line in f if line.strip()]
-                print(f"✅ Loaded metadata features from {features_path}")
+                print(f"[OK] Loaded metadata features from {features_path}")
             else:
-                print(f"⚠️  Metadata features file not found, using defaults")
+                print(f"[?][?]  Metadata features file not found, using defaults")
                 self.metadata_features = [
                     'font_size', 'text_length', 'word_count', 'avg_word_length',
                     'is_bold', 'is_italic', 'is_uppercase', 'is_title_case', 
@@ -113,16 +113,16 @@ class PDFHeadingExtractor:
             if os.path.exists(config_path):
                 with open(config_path, 'r') as f:
                     self.model_config = json.load(f)
-                print(f"✅ Loaded model configuration from {config_path}")
+                print(f"[OK] Loaded model configuration from {config_path}")
             
-            print(f"📊 Model Info:")
+            print(f"[STATS] Model Info:")
             print(f"   Classes: {list(self.label_encoder.classes_)}")
             if self.model_config:
                 print(f"   Training accuracy: {self.model_config.get('accuracy', 'N/A')}")
                 print(f"   Weighted F1: {self.model_config.get('weighted_f1', 'N/A')}")
             
         except Exception as e:
-            print(f"❌ Error loading models: {e}")
+            print(f"[ERROR] Error loading models: {e}")
             sys.exit(1)
     
     def extract_text_from_pdf(self, pdf_path, method='pymupdf'):
@@ -139,7 +139,7 @@ class PDFHeadingExtractor:
         if not os.path.exists(pdf_path):
             raise FileNotFoundError(f"PDF file not found: {pdf_path}")
         
-        print(f"📖 Extracting text from: {os.path.basename(pdf_path)}")
+        print(f"[?] Extracting text from: {os.path.basename(pdf_path)}")
         
         if method == 'pymupdf':
             return self._extract_with_pymupdf(pdf_path)
@@ -154,7 +154,7 @@ class PDFHeadingExtractor:
         
         try:
             doc = fitz.open(pdf_path)
-            print(f"📄 Total pages: {len(doc)}")
+            print(f"[FILE] Total pages: {len(doc)}")
             
             for page_num in range(len(doc)):
                 page = doc[page_num]
@@ -215,10 +215,10 @@ class PDFHeadingExtractor:
                                 })
             
             doc.close()
-            print(f"\n✅ Extracted {len(extracted_data)} text blocks using PyMuPDF")
+            print(f"\n[OK] Extracted {len(extracted_data)} text blocks using PyMuPDF")
             
         except Exception as e:
-            print(f"\n❌ Error with PyMuPDF: {e}")
+            print(f"\n[ERROR] Error with PyMuPDF: {e}")
             return pd.DataFrame()
         
         df = pd.DataFrame(extracted_data)
@@ -230,7 +230,7 @@ class PDFHeadingExtractor:
         
         try:
             with pdfplumber.open(pdf_path) as pdf:
-                print(f"📄 Total pages: {len(pdf.pages)}")
+                print(f"[FILE] Total pages: {len(pdf.pages)}")
                 
                 for page_num, page in enumerate(pdf.pages, 1):
                     print(f"  Processing page {page_num}/{len(pdf.pages)}...", end='\r')
@@ -259,10 +259,10 @@ class PDFHeadingExtractor:
                                     'height': block['y1'] - block['y0']
                                 })
             
-            print(f"\n✅ Extracted {len(extracted_data)} text blocks using pdfplumber")
+            print(f"\n[OK] Extracted {len(extracted_data)} text blocks using pdfplumber")
             
         except Exception as e:
-            print(f"\n❌ Error with pdfplumber: {e}")
+            print(f"\n[ERROR] Error with pdfplumber: {e}")
             return pd.DataFrame()
         
         df = pd.DataFrame(extracted_data)
@@ -326,7 +326,7 @@ class PDFHeadingExtractor:
         # Sort by page and position
         df = df.sort_values(['page_number', 'y0', 'x0']).reset_index(drop=True)
         
-        print(f"📊 After cleaning: {len(df)} text blocks")
+        print(f"[STATS] After cleaning: {len(df)} text blocks")
         return df
     
     def extract_text_features(self, text_series):
@@ -359,7 +359,7 @@ class PDFHeadingExtractor:
     
     def prepare_features(self, df):
         """Prepare features for prediction."""
-        print("🔄 Preparing features for prediction...")
+        print("[PROCESS] Preparing features for prediction...")
         
         # Clean text data
         df['text'] = df['text'].fillna('').astype(str)
@@ -407,7 +407,7 @@ class PDFHeadingExtractor:
         metadata_sparse = csr_matrix(metadata_df.values)
         combined_features = hstack([tfidf_features, metadata_sparse])
         
-        print(f"✅ Feature preparation complete: {combined_features.shape}")
+        print(f"[OK] Feature preparation complete: {combined_features.shape}")
         return combined_features
     
     def predict_headings(self, df, confidence_threshold=0.5):
@@ -422,16 +422,16 @@ class PDFHeadingExtractor:
             pd.DataFrame: DataFrame with predictions
         """
         if df.empty:
-            print("⚠️  No text to classify")
+            print("[?][?]  No text to classify")
             return df
         
-        print("🔮 Predicting headings...")
+        print("[?] Predicting headings...")
         
         # Prepare features
         features = self.prepare_features(df)
         
         # Make predictions
-        print("🔄 Making predictions...")
+        print("[PROCESS] Making predictions...")
         features_dense = features.toarray()
         predictions = self.model.predict(features_dense)
         probabilities = self.model.predict_proba(features_dense)
@@ -449,9 +449,9 @@ class PDFHeadingExtractor:
         low_confidence_mask = result_df['confidence'] < confidence_threshold
         result_df.loc[low_confidence_mask, 'predicted_heading'] = 'normal'
         
-        print(f"✅ Predictions complete!")
-        print(f"📊 Confidence threshold: {confidence_threshold}")
-        print(f"📊 Low confidence predictions set to 'normal': {low_confidence_mask.sum()}")
+        print(f"[OK] Predictions complete!")
+        print(f"[STATS] Confidence threshold: {confidence_threshold}")
+        print(f"[STATS] Low confidence predictions set to 'normal': {low_confidence_mask.sum()}")
         
         return result_df
     
@@ -466,7 +466,7 @@ class PDFHeadingExtractor:
         Returns:
             dict: Hierarchical heading structure
         """
-        print("🏗️  Building heading hierarchy...")
+        print("[CONSTRUCTION]  Building heading hierarchy...")
         
         # Filter headings above confidence threshold
         headings = result_df[
@@ -475,7 +475,7 @@ class PDFHeadingExtractor:
         ].copy()
         
         if headings.empty:
-            print("⚠️  No headings found above confidence threshold")
+            print("[?][?]  No headings found above confidence threshold")
             return {"headings": [], "document_structure": []}
         
         # Sort by page and position
@@ -529,8 +529,8 @@ class PDFHeadingExtractor:
             'document_structure': hierarchy
         }
         
-        print(f"✅ Found {len(flat_headings)} headings")
-        print(f"📊 Heading distribution:")
+        print(f"[OK] Found {len(flat_headings)} headings")
+        print(f"[STATS] Heading distribution:")
         heading_counts = headings['predicted_heading'].value_counts()
         for heading_type, count in heading_counts.items():
             print(f"   {heading_type}: {count}")
@@ -539,7 +539,7 @@ class PDFHeadingExtractor:
     
     def save_results(self, heading_structure, pdf_path, output_path):
         """Save results to JSON file."""
-        print(f"💾 Saving results to: {output_path}")
+        print(f"[SAVE] Saving results to: {output_path}")
         
         # Create output structure
         output_data = {
@@ -559,7 +559,7 @@ class PDFHeadingExtractor:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✅ Results saved successfully!")
+        print(f"[OK] Results saved successfully!")
         return output_data
     
     def process_pdf(self, pdf_path, output_json=None, confidence_threshold=0.5, extraction_method='pymupdf'):
@@ -575,9 +575,9 @@ class PDFHeadingExtractor:
         Returns:
             dict: Processing results
         """
-        print(f"🚀 Processing PDF: {os.path.basename(pdf_path)}")
-        print(f"📊 Confidence threshold: {confidence_threshold}")
-        print(f"🔧 Extraction method: {extraction_method}")
+        print(f"[START] Processing PDF: {os.path.basename(pdf_path)}")
+        print(f"[STATS] Confidence threshold: {confidence_threshold}")
+        print(f"[TOOL] Extraction method: {extraction_method}")
         print("=" * 60)
         
         try:
@@ -601,16 +601,16 @@ class PDFHeadingExtractor:
             output_data = self.save_results(heading_structure, pdf_path, output_json)
             
             print("=" * 60)
-            print("🎉 Processing complete!")
-            print(f"📄 Source: {os.path.basename(pdf_path)}")
-            print(f"📊 Total text blocks: {len(df)}")
-            print(f"🎯 Headings found: {len(heading_structure['headings'])}")
-            print(f"💾 Output: {output_json}")
+            print("[COMPLETE] Processing complete!")
+            print(f"[FILE] Source: {os.path.basename(pdf_path)}")
+            print(f"[STATS] Total text blocks: {len(df)}")
+            print(f"[TARGET] Headings found: {len(heading_structure['headings'])}")
+            print(f"[SAVE] Output: {output_json}")
             
             return output_data
             
         except Exception as e:
-            print(f"❌ Error processing PDF: {e}")
+            print(f"[ERROR] Error processing PDF: {e}")
             raise
 
 def main():
@@ -628,12 +628,12 @@ def main():
     
     # Check dependencies
     if not PDF_LIBRARIES_AVAILABLE:
-        print("❌ PDF processing libraries not available")
+        print("[ERROR] PDF processing libraries not available")
         print("Install with: pip install pymupdf pdfplumber")
         sys.exit(1)
     
     if not ML_LIBRARIES_AVAILABLE:
-        print("❌ ML libraries not available")
+        print("[ERROR] ML libraries not available")
         print("Install with: pip install xgboost scikit-learn scipy joblib")
         sys.exit(1)
     
@@ -641,7 +641,7 @@ def main():
     try:
         extractor = PDFHeadingExtractor(models_dir=args.models_dir)
     except Exception as e:
-        print(f"❌ Failed to initialize extractor: {e}")
+        print(f"[ERROR] Failed to initialize extractor: {e}")
         sys.exit(1)
     
     # Process PDF
@@ -656,14 +656,14 @@ def main():
         # Print summary
         headings = result['results']['headings']
         if headings:
-            print(f"\n📋 Extracted Headings:")
+            print(f"\n[RESULT] Extracted Headings:")
             for heading in headings:
                 print(f"   {heading['type'].upper()}: \"{heading['text']}\" (confidence: {heading['confidence']:.3f})")
         else:
-            print(f"\n⚠️  No headings found above confidence threshold {args.confidence_threshold}")
+            print(f"\n[?][?]  No headings found above confidence threshold {args.confidence_threshold}")
         
     except Exception as e:
-        print(f"❌ Processing failed: {e}")
+        print(f"[ERROR] Processing failed: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

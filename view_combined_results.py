@@ -34,19 +34,19 @@ def print_tree_structure(structure: List[Dict], indent: int = 0) -> None:
         source = section.get('source', 'N/A')
         confidence = section.get('confidence', 0)
         
-        print(f"{prefix}📄 {section_type} (Page {page}, {source}, {confidence:.3f})")
+        print(f"{prefix}[FILE] {section_type} (Page {page}, {source}, {confidence:.3f})")
         print(f"{prefix}   \"{text}\"")
         
         # Print subsections if any
         subsections = section.get('subsections', [])
         if subsections:
-            print(f"{prefix}   └── Subsections:")
+            print(f"{prefix}   [?][?][?] Subsections:")
             for i, subsection in enumerate(subsections):
                 sub_prefix = prefix + "       "
                 if i == len(subsections) - 1:
-                    connector = "└── "
+                    connector = "[?][?][?] "
                 else:
-                    connector = "├── "
+                    connector = "[?][?][?] "
                 
                 sub_type = subsection.get('type', 'unknown').upper()
                 sub_text = subsection.get('text', 'No text')[:60]
@@ -62,9 +62,9 @@ def print_tree_structure(structure: List[Dict], indent: int = 0) -> None:
                 if h3_subsections:
                     for j, h3 in enumerate(h3_subsections):
                         if j == len(h3_subsections) - 1:
-                            h3_connector = "    └── "
+                            h3_connector = "    [?][?][?] "
                         else:
-                            h3_connector = "    ├── "
+                            h3_connector = "    [?][?][?] "
                         
                         h3_text = h3.get('text', 'No text')[:50]
                         h3_page = h3.get('page', 'N/A')
@@ -82,28 +82,28 @@ def print_summary_statistics(data: Dict) -> None:
     Args:
         data: Combined results data
     """
-    print("📊 SUMMARY STATISTICS")
+    print("[STATS] SUMMARY STATISTICS")
     print("=" * 50)
     
     metadata = data.get('metadata', {})
     summary = data.get('summary', {})
     
-    print(f"📄 Source File: {metadata.get('source_file', 'N/A')}")
-    print(f"⏰ Processing Time: {metadata.get('processing_timestamp', 'N/A')}")
-    print(f"🔧 Combination Method: {metadata.get('combination_method', 'N/A')}")
+    print(f"[FILE] Source File: {metadata.get('source_file', 'N/A')}")
+    print(f"[?] Processing Time: {metadata.get('processing_timestamp', 'N/A')}")
+    print(f"[TOOL] Combination Method: {metadata.get('combination_method', 'N/A')}")
     print()
     
-    print(f"📈 Content Summary:")
-    print(f"   • Total sections: {summary.get('total_sections', 0)}")
-    print(f"   • Titles: {summary.get('titles', 0)}")
-    print(f"   • H1 sections: {summary.get('h1_sections', 0)}")
-    print(f"   • Total H2s: {summary.get('total_h2s', 0)}")
-    print(f"   • Total H3s: {summary.get('total_h3s', 0)}")
+    print(f"[CHART] Content Summary:")
+    print(f"   [?] Total sections: {summary.get('total_sections', 0)}")
+    print(f"   [?] Titles: {summary.get('titles', 0)}")
+    print(f"   [?] H1 sections: {summary.get('h1_sections', 0)}")
+    print(f"   [?] Total H2s: {summary.get('total_h2s', 0)}")
+    print(f"   [?] Total H3s: {summary.get('total_h3s', 0)}")
     print()
     
-    print(f"📁 Source Files:")
-    print(f"   • Safe1 output: {Path(metadata.get('safe1_file', 'N/A')).name}")
-    print(f"   • Safe2 output: {Path(metadata.get('safe2_file', 'N/A')).name}")
+    print(f"[FOLDER] Source Files:")
+    print(f"   [?] Safe1 output: {Path(metadata.get('safe1_file', 'N/A')).name}")
+    print(f"   [?] Safe2 output: {Path(metadata.get('safe2_file', 'N/A')).name}")
     print()
 
 def analyze_hierarchy_distribution(structure: List[Dict]) -> None:
@@ -113,7 +113,7 @@ def analyze_hierarchy_distribution(structure: List[Dict]) -> None:
     Args:
         structure: Hierarchical structure
     """
-    print("📊 HIERARCHY DISTRIBUTION BY PAGE")
+    print("[STATS] HIERARCHY DISTRIBUTION BY PAGE")
     print("=" * 50)
     
     page_stats = {}
@@ -162,7 +162,7 @@ def print_confidence_analysis(structure: List[Dict]) -> None:
     Args:
         structure: Hierarchical structure
     """
-    print("📊 CONFIDENCE ANALYSIS")
+    print("[STATS] CONFIDENCE ANALYSIS")
     print("=" * 50)
     
     confidence_data = {'title': [], 'h1': [], 'h2': [], 'h3': []}
@@ -216,18 +216,18 @@ def main():
     # Load JSON data
     json_path = Path(args.json_path)
     if not json_path.exists():
-        print(f"❌ JSON file not found: {json_path}")
+        print(f"[ERROR] JSON file not found: {json_path}")
         return
     
     try:
         with open(json_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
     except Exception as e:
-        print(f"❌ Error loading JSON file: {e}")
+        print(f"[ERROR] Error loading JSON file: {e}")
         return
     
-    print(f"🔍 COMBINED HEADING EXTRACTION RESULTS")
-    print(f"📁 File: {json_path.name}")
+    print(f"[SEARCH] COMBINED HEADING EXTRACTION RESULTS")
+    print(f"[FOLDER] File: {json_path.name}")
     print("=" * 80)
     print()
     
@@ -245,13 +245,13 @@ def main():
     
     # Show tree structure
     if args.show_tree:
-        print("🌳 HIERARCHICAL STRUCTURE")
+        print("[?] HIERARCHICAL STRUCTURE")
         print("=" * 50)
         structure = data.get('hierarchical_structure', [])
         if structure:
             print_tree_structure(structure)
         else:
-            print("❌ No hierarchical structure found in the data")
+            print("[ERROR] No hierarchical structure found in the data")
 
 if __name__ == "__main__":
     main()

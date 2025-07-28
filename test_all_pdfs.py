@@ -21,21 +21,21 @@ def test_all_pdfs():
     
     # Verify test folder exists
     if not test_folder.exists():
-        print(f"❌ Test folder not found: {test_folder}")
+        print(f"[ERROR] Test folder not found: {test_folder}")
         return
     
     # Find all PDF files in test folder
     pdf_files = list(test_folder.glob("*.pdf"))
     
     if not pdf_files:
-        print(f"❌ No PDF files found in {test_folder}")
+        print(f"[ERROR] No PDF files found in {test_folder}")
         return
     
-    print(f"🎯 BATCH PROCESSING ALL TEST PDFs")
-    print(f"📁 Test folder: {test_folder}")
-    print(f"📄 Found {len(pdf_files)} PDF files:")
+    print(f"[TARGET] BATCH PROCESSING ALL TEST PDFs")
+    print(f"[FOLDER] Test folder: {test_folder}")
+    print(f"[FILE] Found {len(pdf_files)} PDF files:")
     for pdf in pdf_files:
-        print(f"   • {pdf.name}")
+        print(f"   [?] {pdf.name}")
     print("=" * 80)
     
     # Create base output directory with timestamp
@@ -43,7 +43,7 @@ def test_all_pdfs():
     batch_output_dir = output_base / f"batch_test_{timestamp}"
     batch_output_dir.mkdir(parents=True, exist_ok=True)
     
-    print(f"📁 Batch output directory: {batch_output_dir}")
+    print(f"[FOLDER] Batch output directory: {batch_output_dir}")
     print()
     
     # Process each PDF
@@ -52,7 +52,7 @@ def test_all_pdfs():
     failed = 0
     
     for i, pdf_file in enumerate(pdf_files, 1):
-        print(f"🚀 PROCESSING PDF {i}/{len(pdf_files)}: {pdf_file.name}")
+        print(f"[START] PROCESSING PDF {i}/{len(pdf_files)}: {pdf_file.name}")
         print("=" * 60)
         
         try:
@@ -77,8 +77,8 @@ def test_all_pdfs():
             })
             successful += 1
             
-            print(f"✅ Successfully processed: {pdf_file.name}")
-            print(f"📄 Output: {output_path}")
+            print(f"[OK] Successfully processed: {pdf_file.name}")
+            print(f"[FILE] Output: {output_path}")
             
         except Exception as e:
             results.append({
@@ -89,33 +89,33 @@ def test_all_pdfs():
             })
             failed += 1
             
-            print(f"❌ Failed to process: {pdf_file.name}")
+            print(f"[ERROR] Failed to process: {pdf_file.name}")
             print(f"   Error: {e}")
         
         print()
     
     # Print summary
-    print("🎉 BATCH PROCESSING COMPLETE!")
+    print("[COMPLETE] BATCH PROCESSING COMPLETE!")
     print("=" * 80)
-    print(f"📊 SUMMARY:")
-    print(f"   • Total PDFs: {len(pdf_files)}")
-    print(f"   • Successful: {successful}")
-    print(f"   • Failed: {failed}")
-    print(f"   • Success rate: {(successful/len(pdf_files)*100):.1f}%")
+    print(f"[STATS] SUMMARY:")
+    print(f"   [?] Total PDFs: {len(pdf_files)}")
+    print(f"   [?] Successful: {successful}")
+    print(f"   [?] Failed: {failed}")
+    print(f"   [?] Success rate: {(successful/len(pdf_files)*100):.1f}%")
     print()
     
     # Print detailed results
-    print(f"📋 DETAILED RESULTS:")
+    print(f"[RESULT] DETAILED RESULTS:")
     for result in results:
-        status_icon = "✅" if result['status'] == 'SUCCESS' else "❌"
+        status_icon = "[OK]" if result['status'] == 'SUCCESS' else "[ERROR]"
         print(f"   {status_icon} {result['pdf']}: {result['status']}")
         if result['status'] == 'SUCCESS':
-            print(f"      📄 Output: {result['output_path']}")
+            print(f"      [FILE] Output: {result['output_path']}")
         else:
-            print(f"      ❌ Error: {result['error']}")
+            print(f"      [ERROR] Error: {result['error']}")
     
     print()
-    print(f"📁 All outputs saved in: {batch_output_dir}")
+    print(f"[FOLDER] All outputs saved in: {batch_output_dir}")
     
     # Generate a summary report
     generate_summary_report(results, batch_output_dir)
@@ -152,7 +152,7 @@ def generate_summary_report(results, output_dir):
             else:
                 f.write(f"Error: {result['error']}\n")
     
-    print(f"📄 Summary report saved: {report_file}")
+    print(f"[FILE] Summary report saved: {report_file}")
 
 def view_all_results(batch_output_dir=None):
     """View results for all processed PDFs using the viewer."""
@@ -161,16 +161,16 @@ def view_all_results(batch_output_dir=None):
         # Find the most recent batch output directory
         output_base = Path("test_output")
         if not output_base.exists():
-            print("❌ No test output directory found")
+            print("[ERROR] No test output directory found")
             return
         
         batch_dirs = [d for d in output_base.iterdir() if d.is_dir() and d.name.startswith("batch_test_")]
         if not batch_dirs:
-            print("❌ No batch test results found")
+            print("[ERROR] No batch test results found")
             return
         
         batch_output_dir = max(batch_dirs, key=lambda x: x.stat().st_mtime)
-        print(f"📁 Using most recent batch: {batch_output_dir}")
+        print(f"[FOLDER] Using most recent batch: {batch_output_dir}")
     
     # Find all combined JSON files
     json_files = []
@@ -180,12 +180,12 @@ def view_all_results(batch_output_dir=None):
             json_files.extend(combined_files)
     
     if not json_files:
-        print("❌ No combined JSON files found")
+        print("[ERROR] No combined JSON files found")
         return
     
-    print(f"🏛️  VIEWING ALL BATCH RESULTS")
-    print(f"📁 Batch directory: {batch_output_dir}")
-    print(f"📄 Found {len(json_files)} result files")
+    print(f"[BUILDING]  VIEWING ALL BATCH RESULTS")
+    print(f"[FOLDER] Batch directory: {batch_output_dir}")
+    print(f"[FILE] Found {len(json_files)} result files")
     print("=" * 80)
     
     # Import the viewer function
@@ -193,12 +193,12 @@ def view_all_results(batch_output_dir=None):
     from view_final_results import display_hierarchical_structure
     
     for i, json_file in enumerate(json_files, 1):
-        print(f"\n📋 RESULT {i}/{len(json_files)}: {json_file.parent.name}")
+        print(f"\n[RESULT] RESULT {i}/{len(json_files)}: {json_file.parent.name}")
         print("=" * 60)
         try:
             display_hierarchical_structure(str(json_file))
         except Exception as e:
-            print(f"❌ Error viewing {json_file}: {e}")
+            print(f"[ERROR] Error viewing {json_file}: {e}")
         
         if i < len(json_files):
             input("\nPress Enter to continue to next result...")
@@ -219,7 +219,7 @@ if __name__ == "__main__":
         
         # Ask if user wants to view results
         try:
-            response = input("\n🔍 Would you like to view the results? (y/n): ").lower().strip()
+            response = input("\n[SEARCH] Would you like to view the results? (y/n): ").lower().strip()
             if response in ['y', 'yes']:
                 # Find the most recent batch directory
                 output_base = Path("test_output")
@@ -228,4 +228,4 @@ if __name__ == "__main__":
                     latest_batch = max(batch_dirs, key=lambda x: x.stat().st_mtime)
                     view_all_results(latest_batch)
         except KeyboardInterrupt:
-            print("\n👋 Exiting...")
+            print("\n[EXIT] Exiting...")
