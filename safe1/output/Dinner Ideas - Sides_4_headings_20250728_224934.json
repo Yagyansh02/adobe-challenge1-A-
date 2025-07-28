@@ -1,0 +1,112 @@
+{
+  "file_name": "Dinner Ideas - Sides_4.pdf",
+  "total_text_blocks": 615,
+  "high_confidence_predictions": 469,
+  "confidence_threshold": 0.55,
+  "normal_confidence_threshold": 0.85,
+  "rule_enhancements": {
+    "total_enhanced": 615,
+    "top_position_enhancements": 100,
+    "large_bbox_enhancements": 0
+  },
+  "titles": {
+    "count": 0,
+    "items": []
+  },
+  "h1_headings": {
+    "count": 4,
+    "items": [
+      {
+        "text": "Panzanella",
+        "page": 2,
+        "font_size": 12.0,
+        "is_bold": true,
+        "confidence": 0.5904750227928162,
+        "bbox": {
+          "x1": 72.0,
+          "y1": 235.58001708984375,
+          "x2": 128.07200622558594,
+          "y2": 247.58001708984375,
+          "width": 56.07200622558594,
+          "height": 12.0,
+          "area": 672.8640747070312
+        },
+        "enhancement_applied": "bbox_near_60th(-0.15)",
+        "prob_h1_original": 0.6904750466346741,
+        "prob_h1_enhanced": 0.5904750227928162,
+        "improvement_percentage": -14.482786065803662
+      },
+      {
+        "text": "Potato Salad",
+        "page": 5,
+        "font_size": 12.0,
+        "is_bold": true,
+        "confidence": 0.8274747133255005,
+        "bbox": {
+          "x1": 72.0,
+          "y1": 118.32000732421875,
+          "x2": 137.31201171875,
+          "y2": 130.32000732421875,
+          "width": 65.31201171875,
+          "height": 12.0,
+          "area": 783.744140625
+        },
+        "enhancement_applied": "top_position(+0.3) | bbox_near_60th(-0.15)",
+        "prob_h1_original": 0.6274746656417847,
+        "prob_h1_enhanced": 0.8274747133255005,
+        "improvement_percentage": 31.873804415538377
+      },
+      {
+        "text": "Quesadillas",
+        "page": 6,
+        "font_size": 12.0,
+        "is_bold": true,
+        "confidence": 0.773914098739624,
+        "bbox": {
+          "x1": 72.0,
+          "y1": 338.1199951171875,
+          "x2": 132.15200805664062,
+          "y2": 350.1199951171875,
+          "width": 60.152008056640625,
+          "height": 12.0,
+          "area": 721.8240966796875
+        },
+        "enhancement_applied": "bbox_near_60th(-0.15)",
+        "prob_h1_original": 0.8739141225814819,
+        "prob_h1_enhanced": 0.773914098739624,
+        "improvement_percentage": -11.442774668346674
+      },
+      {
+        "text": "Som Tum (Green Papaya Salad)",
+        "page": 15,
+        "font_size": 12.0,
+        "is_bold": true,
+        "confidence": 0.89000004529953,
+        "bbox": {
+          "x1": 72.0,
+          "y1": 103.67999267578125,
+          "x2": 229.3520050048828,
+          "y2": 115.67999267578125,
+          "width": 157.3520050048828,
+          "height": 12.0,
+          "area": 1888.2240600585938
+        },
+        "enhancement_applied": "top_position(+0.3) | bbox_near_60th(-0.15)",
+        "prob_h1_original": 0.737602174282074,
+        "prob_h1_enhanced": 0.89000004529953,
+        "improvement_percentage": 20.661255664788218
+      }
+    ]
+  },
+  "statistics": {
+    "avg_confidence": 0.9897581934928894,
+    "class_distribution": {
+      "normal": 608,
+      "h1": 7
+    },
+    "high_confidence_distribution": {
+      "normal": 465,
+      "h1": 4
+    }
+  }
+}

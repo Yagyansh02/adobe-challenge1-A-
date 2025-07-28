@@ -725,7 +725,7 @@ class CombinedHeadingExtractor:
     
     def save_combined_results(self, combined_result: Dict, pdf_path: str) -> str:
         """
-        Save the combined results to JSON files (both hierarchical and flat outline formats).
+        Save the combined results to JSON files (flat outline format only).
         
         Args:
             combined_result: Combined hierarchical results
@@ -734,29 +734,38 @@ class CombinedHeadingExtractor:
         Returns:
             str: Path to saved flat outline file
         """
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        
-        # Save hierarchical format (for reference)
-        hierarchical_filename = f"combined_hierarchical_{Path(pdf_path).stem}_{timestamp}.json"
-        hierarchical_path = self.output_dir / hierarchical_filename
-        
-        with open(hierarchical_path, 'w', encoding='utf-8') as f:
-            json.dump(combined_result, f, indent=2, ensure_ascii=False)
-        
-        print(f"\n[SAVE] Hierarchical results saved to: {hierarchical_path}")
+        # Use PDF name without timestamp for exact matching
+        pdf_stem = Path(pdf_path).stem
         
         # Convert to flat outline format
         flat_outline = self.convert_to_flat_outline(combined_result)
         
-        # Save flat outline format (main output)
-        outline_filename = f"combined_{Path(pdf_path).stem}_{timestamp}.json"
+        # Save flat outline format (main output) - this matches the PDF name exactly
+        outline_filename = f"{pdf_stem}.json"
         outline_path = self.output_dir / outline_filename
         
         with open(outline_path, 'w', encoding='utf-8') as f:
             json.dump(flat_outline, f, indent=2, ensure_ascii=False)
         
-        print(f"[SAVE] Flat outline saved to: {outline_path}")
+        print(f"[SAVE] Results saved to: {outline_path}")
         return str(outline_path)
+    
+    def cleanup_intermediate_files(self):
+        """Clean up intermediate files from safe1 and safe2 processing."""
+        try:
+            # Clean up safe1_output directory
+            safe1_output = self.output_dir / "safe1_output"
+            if safe1_output.exists():
+                shutil.rmtree(safe1_output)
+            
+            # Clean up safe2_output directory  
+            safe2_output = self.output_dir / "safe2_output"
+            if safe2_output.exists():
+                shutil.rmtree(safe2_output)
+                
+            print(f"[CLEANUP] Removed intermediate files")
+        except Exception as e:
+            print(f"[WARNING] Failed to cleanup intermediate files: {e}")
     
     def process_pdf(self, pdf_path: str) -> str:
         """
@@ -786,11 +795,14 @@ class CombinedHeadingExtractor:
             # Step 4: Save combined results
             output_path = self.save_combined_results(combined_result, pdf_path)
             
+            # Step 5: Clean up intermediate files
+            self.cleanup_intermediate_files()
+            
             print("\n[COMPLETE] PROCESSING COMPLETE!")
             print("=" * 80)
             print(f"[OK] Successfully processed: {Path(pdf_path).name}")
-            print(f"[FOLDER] All outputs saved in: {self.output_dir}")
-            print(f"[COMBINE] Main output (flat outline): {output_path}")
+            print(f"[FOLDER] Output saved in: {self.output_dir}")
+            print(f"[FILE] Main output: {output_path}")
             
             return output_path
             
