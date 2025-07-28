@@ -1,0 +1,38 @@
+{
+  "model_type": "XGBoost",
+  "scikit_learn_version": "1.7.1",
+  "xgboost_version": "3.0.2",
+  "classes": [
+    "h1",
+    "h2",
+    "h3",
+    "normal",
+    "title"
+  ],
+  "n_features_total": 5012,
+  "n_tfidf_features": 5000,
+  "n_metadata_features": 12,
+  "metadata_features": [
+    "font_size",
+    "text_length",
+    "word_count",
+    "avg_word_length",
+    "is_bold",
+    "is_italic",
+    "is_uppercase",
+    "is_title_case",
+    "has_numbers",
+    "bbox_width",
+    "bbox_height",
+    "bbox_area"
+  ],
+  "training_samples": 2000,
+  "model_performance": {
+    "test_accuracy": 0.8879180476047002,
+    "weighted_f1": 0.9117473492892494,
+    "macro_f1": 0.5407980819102949
+  },
+  "training_date": "2025-07-28",
+  "memory_optimized": true,
+  "notes": "Model trained with ultra-conservative memory management due to RAM constraints"
+}

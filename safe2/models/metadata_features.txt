@@ -1,0 +1,12 @@
+font_size
+text_length
+word_count
+avg_word_length
+is_bold
+is_italic
+is_uppercase
+is_title_case
+has_numbers
+bbox_width
+bbox_height
+bbox_area
