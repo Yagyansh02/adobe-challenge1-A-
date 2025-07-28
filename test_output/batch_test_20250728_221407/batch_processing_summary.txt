@@ -1,0 +1,18 @@
+BATCH PDF PROCESSING SUMMARY
+==================================================
+Timestamp: 2025-07-28T22:14:27.830263
+Total PDFs processed: 2
+Successful: 2
+Failed: 0
+Success rate: 100.0%
+
+DETAILED RESULTS:
+------------------------------
+
+PDF: Dinner Ideas - Sides_2.pdf
+Status: SUCCESS
+Output: test_output\batch_test_20250728_221407\Dinner Ideas - Sides_2_output\combined_Dinner Ideas - Sides_2_20250728_221416.json
+
+PDF: Dinner Ideas - Sides_4.pdf
+Status: SUCCESS
+Output: test_output\batch_test_20250728_221407\Dinner Ideas - Sides_4_output\combined_Dinner Ideas - Sides_4_20250728_221427.json

@@ -11,13 +11,84 @@ import sys
 from pathlib import Path
 
 def display_hierarchical_structure(json_file: str):
-    """Display the hierarchical structure in a tree format."""
+    """Display the structure in a tree format (handles both hierarchical and flat outline formats)."""
     
     with open(json_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
     print("🏛️  FINAL COMBINED HEADING STRUCTURE")
     print("=" * 80)
+    
+    # Check if this is the new flat outline format
+    if 'title' in data and 'outline' in data:
+        display_flat_outline_format(data, json_file)
+    else:
+        display_old_hierarchical_format(data, json_file)
+
+def display_flat_outline_format(data: dict, json_file: str):
+    """Display the flat outline format."""
+    
+    print(f"📄 Source: {Path(json_file).name}")
+    print(f"📋 Format: Flat Outline (convert_to_outline.py compatible)")
+    print()
+    
+    title = data.get('title', '')
+    outline = data.get('outline', [])
+    
+    print(f"📖 TITLE: {title}")
+    print()
+    
+    print(f"📊 SUMMARY:")
+    # Count levels
+    level_counts = {}
+    for item in outline:
+        level = item['level']
+        level_counts[level] = level_counts.get(level, 0) + 1
+    
+    print(f"   • Total outline items: {len(outline)}")
+    for level, count in sorted(level_counts.items()):
+        print(f"   • {level} headings: {count}")
+    print()
+    
+    print("📋 OUTLINE STRUCTURE:")
+    print("-" * 60)
+    
+    current_h1 = None
+    current_h2 = None
+    h1_count = 0
+    h2_count = 0
+    h3_count = 0
+    
+    for i, item in enumerate(outline):
+        level = item['level']
+        text = item['text']
+        page = item['page']
+        
+        if level == 'H1':
+            h1_count += 1
+            current_h1 = text
+            current_h2 = None
+            print(f"\n📂 {h1_count}. H1: {text}")
+            print(f"   └─ Page {page}")
+        
+        elif level == 'H2':
+            h2_count += 1
+            current_h2 = text
+            prefix = "   ├─" if i < len(outline) - 1 and outline[i+1]['level'] in ['H2', 'H3'] else "   └─"
+            print(f"{prefix} {h2_count}. H2: {text[:60]}{'...' if len(text) > 60 else ''}")
+            print(f"   │   └─ Page {page}")
+        
+        elif level == 'H3':
+            h3_count += 1
+            # Check if next item is H3 to determine connector
+            next_is_h3 = (i < len(outline) - 1 and 
+                         outline[i+1]['level'] == 'H3')
+            prefix = "      ├─" if next_is_h3 else "      └─"
+            print(f"{prefix} {h3_count}. H3: {text[:50]}{'...' if len(text) > 50 else ''}")
+            print(f"      │   └─ Page {page}")
+
+def display_old_hierarchical_format(data: dict, json_file: str):
+    """Display the old hierarchical format."""
     
     metadata = data.get('metadata', {})
     print(f"📄 Source: {metadata.get('source_file', 'Unknown')}")
@@ -80,15 +151,19 @@ def main():
     else:
         # Find the most recent combined output
         output_dirs = [
+            Path("test_output"),
             Path("final_combined_output"),
-            Path("improved_combined_output"),
+            Path("improved_combined_output"), 
             Path("combined_output")
         ]
         
         json_file = None
         for output_dir in output_dirs:
             if output_dir.exists():
-                json_files = list(output_dir.glob("combined_*.json"))
+                # Look for combined files (flat outline format)
+                json_files = list(output_dir.glob("**/combined_*.json"))
+                # Exclude hierarchical files
+                json_files = [f for f in json_files if 'hierarchical' not in f.name]
                 if json_files:
                     # Get the most recent
                     json_file = max(json_files, key=lambda x: x.stat().st_mtime)
@@ -96,6 +171,7 @@ def main():
         
         if not json_file:
             print("❌ No combined JSON file found. Please specify the path.")
+            print("💡 Looking for files matching pattern: combined_*.json")
             sys.exit(1)
     
     if not Path(json_file).exists():

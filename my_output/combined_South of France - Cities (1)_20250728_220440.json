@@ -1,0 +1,1883 @@
+{
+  "metadata": {
+    "source_file": "South of France - Cities (1).pdf",
+    "processing_timestamp": "2025-07-28T22:04:40.433075",
+    "safe1_file": "my_output\\safe1_output\\safe1_South of France - Cities (1)_result.json",
+    "safe2_file": "my_output\\safe2_output\\safe2_South of France - Cities (1)_result.json",
+    "combination_method": "safe1_h1_preserved_with_safe2_filtering_and_constraints"
+  },
+  "summary": {
+    "total_sections": 19,
+    "titles": 1,
+    "h1_sections": 18,
+    "total_h2s": 31,
+    "total_h3s": 48
+  },
+  "hierarchical_structure": [
+    {
+      "type": "title",
+      "text": "Comprehensive Guide to Major Cities in the South of France",
+      "page": 1,
+      "source": "safe1",
+      "confidence": 0.8060392141342163,
+      "sections": [],
+      "subsections": []
+    },
+    {
+      "type": "h1",
+      "text": "Introduction",
+      "page": 1,
+      "source": "safe1",
+      "confidence": 0.8302193880081177,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 97.16401672363281,
+        "x2": 139.71600341796875,
+        "y2": 111.9480209350586,
+        "width": 67.71600341796875,
+        "height": 14.784004211425781,
+        "area": 1001.1136797121726
+      },
+      "subsections": []
+    },
+    {
+      "type": "h1",
+      "text": "Overview of the Region",
+      "page": 2,
+      "source": "safe1",
+      "confidence": 0.6718324422836304,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 197.0159912109375,
+        "y2": 86.8080062866211,
+        "width": 125.0159912109375,
+        "height": 14.784004211425781,
+        "area": 1848.2369405580685
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "Travel Tips",
+          "page": 2,
+          "source": "safe2",
+          "confidence": 0.8462753295898438,
+          "position": {
+            "x0": 72.0,
+            "y0": 207.74,
+            "x1": 130.9,
+            "y1": 222.53
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": true,
+            "is_italic": false,
+            "font_name": "AdobeClean-Bold"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Marseille: The Oldest City in France",
+      "page": 3,
+      "source": "safe1",
+      "confidence": 0.7117959856987,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 258.57598876953125,
+        "y2": 86.8080062866211,
+        "width": 186.57598876953125,
+        "height": 14.784004211425781,
+        "area": 2758.3402037196793
+      },
+      "subsections": []
+    },
+    {
+      "type": "h1",
+      "text": "MuCEM (Museum of European and Mediterranean Civilizations)",
+      "page": 3,
+      "source": "safe1",
+      "confidence": 0.5830063819885254,
+      "bbox": {
+        "x1": 108.0,
+        "y1": 359.66400146484375,
+        "x2": 438.8602294921875,
+        "y2": 374.447998046875,
+        "width": 330.8602294921875,
+        "height": 14.78399658203125,
+        "area": 4891.436501942575
+      },
+      "subsections": []
+    },
+    {
+      "type": "h1",
+      "text": "Boat Trip to the Calanques",
+      "page": 3,
+      "source": "safe1",
+      "confidence": 0.5641932487487793,
+      "bbox": {
+        "x1": 108.0,
+        "y1": 503.6039733886719,
+        "x2": 245.69757080078125,
+        "y2": 518.387939453125,
+        "width": 137.69757080078125,
+        "height": 14.783966064453125,
+        "area": 2035.7162138763815
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 3,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 3,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 215.72,
+            "x1": 151.09,
+            "y1": 230.48
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 3,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 630.56,
+            "x1": 166.99,
+            "y1": 645.32
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Nice: The Jewel of the French Riviera",
+      "page": 5,
+      "source": "safe1",
+      "confidence": 0.6411994695663452,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 265.2959899902344,
+        "y2": 86.8080062866211,
+        "width": 193.29598999023438,
+        "height": 14.784004211425781,
+        "area": 2857.6887300673407
+      },
+      "subsections": []
+    },
+    {
+      "type": "h1",
+      "text": "Promenade des Anglais",
+      "page": 5,
+      "source": "safe1",
+      "confidence": 0.5758396983146667,
+      "bbox": {
+        "x1": 108.0,
+        "y1": 240.80397033691406,
+        "x2": 230.34121704101562,
+        "y2": 255.5879669189453,
+        "width": 122.34121704101562,
+        "height": 14.78399658203125,
+        "area": 1808.6921345759183
+      },
+      "subsections": []
+    },
+    {
+      "type": "h1",
+      "text": "Russian Orthodox Cathedral",
+      "page": 5,
+      "source": "safe1",
+      "confidence": 0.6629465818405151,
+      "bbox": {
+        "x1": 108.0,
+        "y1": 503.6039733886719,
+        "x2": 255.0240020751953,
+        "y2": 518.387939453125,
+        "width": 147.0240020751953,
+        "height": 14.783966064453125,
+        "area": 2173.5978573397733
+      },
+      "subsections": []
+    },
+    {
+      "type": "h1",
+      "text": "Marc Chagall National Museum",
+      "page": 5,
+      "source": "safe1",
+      "confidence": 0.5709700584411621,
+      "bbox": {
+        "x1": 108.0,
+        "y1": 545.9039916992188,
+        "x2": 270.6960144042969,
+        "y2": 560.68798828125,
+        "width": 162.69601440429688,
+        "height": 14.78399658203125,
+        "area": 2405.297320863232
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 5,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": [
+            {
+              "type": "h3",
+              "text": "Promenade des Anglais",
+              "page": 5,
+              "source": "safe2",
+              "confidence": 0.6119672060012817,
+              "position": {
+                "x0": 108.0,
+                "y0": 240.8,
+                "x1": 535.57,
+                "y1": 255.68
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": true,
+                "is_italic": false,
+                "font_name": "AdobeClean-Bold"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Castle Hill (Colline du Château)",
+              "page": 5,
+              "source": "safe2",
+              "confidence": 0.7598572969436646,
+              "position": {
+                "x0": 108.0,
+                "y0": 300.26,
+                "x1": 537.5,
+                "y1": 315.14
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": true,
+                "is_italic": false,
+                "font_name": "AdobeClean-Bold"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Nice is renowned for its vibrant cultural scene, with numerous museums, galleries, and",
+              "page": 5,
+              "source": "safe2",
+              "confidence": 0.7415299415588379,
+              "position": {
+                "x0": 72.0,
+                "y0": 655.64,
+                "x1": 505.69,
+                "y1": 670.4
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 5,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 215.72,
+            "x1": 151.09,
+            "y1": 230.48
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 5,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 630.56,
+            "x1": 166.99,
+            "y1": 645.32
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Avignon: The City of Popes",
+      "page": 7,
+      "source": "safe1",
+      "confidence": 0.8776789903640747,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 214.47601318359375,
+        "y2": 86.8080062866211,
+        "width": 142.47601318359375,
+        "height": 14.784004211425781,
+        "area": 2106.365978933405
+      },
+      "subsections": []
+    },
+    {
+      "type": "h1",
+      "text": "Opéra Grand Avignon",
+      "page": 7,
+      "source": "safe1",
+      "confidence": 0.6317787170410156,
+      "bbox": {
+        "x1": 108.0,
+        "y1": 469.4040222167969,
+        "x2": 220.92123413085938,
+        "y2": 484.1880187988281,
+        "width": 112.92123413085938,
+        "height": 14.78399658203125,
+        "area": 1669.4271394293755
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 7,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": [
+            {
+              "type": "h3",
+              "text": "Roman times, and it has been a significant religious and cultural center for centuries.",
+              "page": 7,
+              "source": "safe2",
+              "confidence": 0.8006108999252319,
+              "position": {
+                "x0": 72.0,
+                "y0": 173.54,
+                "x1": 493.75,
+                "y1": 188.3
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Pont Saint-Bénézet (Pont d'Avignon)",
+              "page": 7,
+              "source": "safe2",
+              "confidence": 0.6737693548202515,
+              "position": {
+                "x0": 108.0,
+                "y0": 283.16,
+                "x1": 531.97,
+                "y1": 298.04
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": true,
+                "is_italic": false,
+                "font_name": "AdobeClean-Bold"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "\"Sur le Pont d'Avignon,\" was built in the 12th century. Although only a few arches",
+              "page": 7,
+              "source": "safe2",
+              "confidence": 0.9308339953422546,
+              "position": {
+                "x0": 108.0,
+                "y0": 300.38,
+                "x1": 512.06,
+                "y1": 315.14
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Avignon Cathedral",
+              "page": 7,
+              "source": "safe2",
+              "confidence": 0.5585867762565613,
+              "position": {
+                "x0": 108.0,
+                "y0": 342.56,
+                "x1": 537.14,
+                "y1": 357.44
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": true,
+                "is_italic": false,
+                "font_name": "AdobeClean-Bold"
+              }
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 7,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 198.62,
+            "x1": 151.09,
+            "y1": 213.38
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Activities",
+          "page": 7,
+          "source": "safe2",
+          "confidence": 0.5463283658027649,
+          "position": {
+            "x0": 72.0,
+            "y0": 444.26,
+            "x1": 162.79,
+            "y1": 459.02
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "cultural treat.",
+          "page": 7,
+          "source": "safe2",
+          "confidence": 0.6777986884117126,
+          "position": {
+            "x0": 108.0,
+            "y0": 486.62,
+            "x1": 177.25,
+            "y1": 501.38
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 7,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 554.0,
+            "x1": 166.99,
+            "y1": 568.76
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Aix-en-Provence: A City of Art and Culture",
+      "page": 8,
+      "source": "safe1",
+      "confidence": 0.5538466572761536,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 295.5360107421875,
+        "y2": 86.8080062866211,
+        "width": 223.5360107421875,
+        "height": 14.784004211425781,
+        "area": 3304.7573242178187
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 8,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": [
+            {
+              "type": "h3",
+              "text": "Cours Mirabeau",
+              "page": 8,
+              "source": "safe2",
+              "confidence": 0.8951461315155029,
+              "position": {
+                "x0": 108.0,
+                "y0": 223.7,
+                "x1": 533.17,
+                "y1": 238.46
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Saint-Sauveur Cathedral",
+              "page": 8,
+              "source": "safe2",
+              "confidence": 0.9696822762489319,
+              "position": {
+                "x0": 108.0,
+                "y0": 265.94,
+                "x1": 517.22,
+                "y1": 280.7
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Hôtel de Ville",
+              "page": 8,
+              "source": "safe2",
+              "confidence": 0.5585367679595947,
+              "position": {
+                "x0": 108.0,
+                "y0": 325.22,
+                "x1": 542.53,
+                "y1": 339.98
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Atelier Cézanne",
+              "page": 8,
+              "source": "safe2",
+              "confidence": 0.6317437887191772,
+              "position": {
+                "x0": 108.0,
+                "y0": 384.5,
+                "x1": 498.25,
+                "y1": 399.26
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Cézanne created many of his masterpieces and gain insight into his artistic process.",
+              "page": 8,
+              "source": "safe2",
+              "confidence": 0.8894510865211487,
+              "position": {
+                "x0": 108.0,
+                "y0": 418.7,
+                "x1": 523.87,
+                "y1": 433.46
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Walking Tour",
+              "page": 8,
+              "source": "safe2",
+              "confidence": 0.6021127700805664,
+              "position": {
+                "x0": 108.0,
+                "y0": 468.86,
+                "x1": 536.6,
+                "y1": 483.62
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Local Markets",
+              "page": 8,
+              "source": "safe2",
+              "confidence": 0.9080563187599182,
+              "position": {
+                "x0": 108.0,
+                "y0": 511.1,
+                "x1": 530.54,
+                "y1": 525.86
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 8,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 198.62,
+            "x1": 151.09,
+            "y1": 213.38
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 8,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 553.28,
+            "x1": 166.99,
+            "y1": 568.04
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Toulouse: The Pink City",
+      "page": 9,
+      "source": "safe1",
+      "confidence": 0.653283417224884,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 197.135986328125,
+        "y2": 86.8080062866211,
+        "width": 125.135986328125,
+        "height": 14.784004211425781,
+        "area": 1850.010948875919
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 9,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": [
+            {
+              "type": "h3",
+              "text": "Basilica of Saint-Sernin",
+              "page": 9,
+              "source": "safe2",
+              "confidence": 0.9719772934913635,
+              "position": {
+                "x0": 108.0,
+                "y0": 223.7,
+                "x1": 518.95,
+                "y1": 238.46
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Capitole de Toulouse",
+              "page": 9,
+              "source": "safe2",
+              "confidence": 0.9595197439193726,
+              "position": {
+                "x0": 108.0,
+                "y0": 283.04,
+                "x1": 529.63,
+                "y1": 297.8
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Jacobins Convent",
+              "page": 9,
+              "source": "safe2",
+              "confidence": 0.8745928406715393,
+              "position": {
+                "x0": 108.0,
+                "y0": 342.32,
+                "x1": 527.35,
+                "y1": 357.08
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Cité de l'Espace",
+              "page": 9,
+              "source": "safe2",
+              "confidence": 0.9423801302909851,
+              "position": {
+                "x0": 108.0,
+                "y0": 384.5,
+                "x1": 527.95,
+                "y1": 399.26
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Airbus Factory Tours",
+              "page": 9,
+              "source": "safe2",
+              "confidence": 0.543814480304718,
+              "position": {
+                "x0": 108.0,
+                "y0": 468.86,
+                "x1": 505.39,
+                "y1": 483.62
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Aeroscopia Museum",
+              "page": 9,
+              "source": "safe2",
+              "confidence": 0.8856335878372192,
+              "position": {
+                "x0": 108.0,
+                "y0": 511.1,
+                "x1": 542.77,
+                "y1": 525.86
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 9,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 198.62,
+            "x1": 151.09,
+            "y1": 213.38
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 9,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 553.28,
+            "x1": 166.99,
+            "y1": 568.04
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Montpellier: A University City with Medieval Charm",
+      "page": 10,
+      "source": "safe1",
+      "confidence": 0.7400009632110596,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 342.9960021972656,
+        "y2": 86.8080062866211,
+        "width": 270.9960021972656,
+        "height": 14.784004211425781,
+        "area": 4006.4060377639253
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 10,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": [
+            {
+              "type": "h3",
+              "text": "Place de la Comédie",
+              "page": 10,
+              "source": "safe2",
+              "confidence": 0.9607174396514893,
+              "position": {
+                "x0": 108.0,
+                "y0": 223.7,
+                "x1": 484.87,
+                "y1": 238.46
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Saint-Pierre Cathedral",
+              "page": 10,
+              "source": "safe2",
+              "confidence": 0.8467902541160583,
+              "position": {
+                "x0": 108.0,
+                "y0": 283.04,
+                "x1": 537.2,
+                "y1": 297.8
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Promenade du Peyrou",
+              "page": 10,
+              "source": "safe2",
+              "confidence": 0.9898378849029541,
+              "position": {
+                "x0": 108.0,
+                "y0": 325.22,
+                "x1": 536.35,
+                "y1": 339.98
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Musée Fabre",
+              "page": 10,
+              "source": "safe2",
+              "confidence": 0.6806071400642395,
+              "position": {
+                "x0": 108.0,
+                "y0": 367.4,
+                "x1": 520.51,
+                "y1": 382.16
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "University Influence",
+              "page": 10,
+              "source": "safe2",
+              "confidence": 0.8216105699539185,
+              "position": {
+                "x0": 108.0,
+                "y0": 434.72,
+                "x1": 497.89,
+                "y1": 449.48
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Modern Architecture",
+              "page": 10,
+              "source": "safe2",
+              "confidence": 0.9075226187705994,
+              "position": {
+                "x0": 108.0,
+                "y0": 476.9,
+                "x1": 515.6,
+                "y1": 491.66
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 10,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 198.62,
+            "x1": 151.09,
+            "y1": 213.38
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 10,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 519.08,
+            "x1": 166.99,
+            "y1": 533.84
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Perpignan: A Blend of French and Catalan Cultures",
+      "page": 11,
+      "source": "safe1",
+      "confidence": 0.7994327545166016,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 337.4159851074219,
+        "y2": 86.8080062866211,
+        "width": 265.4159851074219,
+        "height": 14.784004211425781,
+        "area": 3923.9110416078474
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 11,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": [
+            {
+              "type": "h3",
+              "text": "Perpignan, located near the Spanish border, has a unique blend of French and Catalan",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.8572357296943665,
+              "position": {
+                "x0": 72.0,
+                "y0": 122.24,
+                "x1": 502.4,
+                "y1": 137.0
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Palace of the Kings of Majorca",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.820627748966217,
+              "position": {
+                "x0": 108.0,
+                "y0": 223.7,
+                "x1": 531.79,
+                "y1": 238.46
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Perpignan Cathedral",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.9218105673789978,
+              "position": {
+                "x0": 108.0,
+                "y0": 283.04,
+                "x1": 509.71,
+                "y1": 297.8
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Gothic cathedral was built in the 14th century and features a beautiful cloister and bell",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.8739678263664246,
+              "position": {
+                "x0": 108.0,
+                "y0": 300.14,
+                "x1": 538.7,
+                "y1": 314.9
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Castillet",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.8216373920440674,
+              "position": {
+                "x0": 108.0,
+                "y0": 342.32,
+                "x1": 509.05,
+                "y1": 357.08
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Perpignan. It now houses the Casa Pairal Museum, which showcases the history and",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.7240588665008545,
+              "position": {
+                "x0": 108.0,
+                "y0": 359.42,
+                "x1": 529.34,
+                "y1": 374.18
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Loge de Mer",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.8718604445457458,
+              "position": {
+                "x0": 108.0,
+                "y0": 401.6,
+                "x1": 539.72,
+                "y1": 416.36
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Festivals",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.8120078444480896,
+              "position": {
+                "x0": 108.0,
+                "y0": 485.96,
+                "x1": 523.52,
+                "y1": 500.72
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Beaches and Nature",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.9005913138389587,
+              "position": {
+                "x0": 108.0,
+                "y0": 528.2,
+                "x1": 514.21,
+                "y1": 542.96
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Perpignan is known for its vibrant cultural scene, with a strong emphasis on Catalan",
+              "page": 11,
+              "source": "safe2",
+              "confidence": 0.7859031558036804,
+              "position": {
+                "x0": 72.0,
+                "y0": 595.46,
+                "x1": 491.29,
+                "y1": 610.22
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 11,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 198.62,
+            "x1": 151.09,
+            "y1": 213.38
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Fusion",
+          "page": 11,
+          "source": "safe2",
+          "confidence": 0.7064709663391113,
+          "position": {
+            "x0": 72.0,
+            "y0": 460.88,
+            "x1": 149.71,
+            "y1": 475.64
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 11,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 570.38,
+            "x1": 166.99,
+            "y1": 585.14
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Arles: A Roman Treasure",
+      "page": 12,
+      "source": "safe1",
+      "confidence": 0.7905508279800415,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 204.03604125976562,
+        "y2": 86.8080062866211,
+        "width": 132.03604125976562,
+        "height": 14.784004211425781,
+        "area": 1952.0213900443632
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 12,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": [
+            {
+              "type": "h3",
+              "text": "Arles Amphitheatre",
+              "page": 12,
+              "source": "safe2",
+              "confidence": 0.9351001977920532,
+              "position": {
+                "x0": 108.0,
+                "y0": 223.7,
+                "x1": 536.77,
+                "y1": 238.46
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Church of St. Trophime",
+              "page": 12,
+              "source": "safe2",
+              "confidence": 0.8978704810142517,
+              "position": {
+                "x0": 108.0,
+                "y0": 283.04,
+                "x1": 530.53,
+                "y1": 297.8
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Alyscamps",
+              "page": 12,
+              "source": "safe2",
+              "confidence": 0.9273400902748108,
+              "position": {
+                "x0": 108.0,
+                "y0": 342.32,
+                "x1": 528.92,
+                "y1": 357.08
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Thermes de Constantin",
+              "page": 12,
+              "source": "safe2",
+              "confidence": 0.7195113897323608,
+              "position": {
+                "x0": 108.0,
+                "y0": 384.5,
+                "x1": 499.09,
+                "y1": 399.26
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Photography",
+              "page": 12,
+              "source": "safe2",
+              "confidence": 0.8979871273040771,
+              "position": {
+                "x0": 108.0,
+                "y0": 494.0,
+                "x1": 540.91,
+                "y1": 508.76
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 12,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 198.62,
+            "x1": 151.09,
+            "y1": 213.38
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 12,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 536.18,
+            "x1": 166.99,
+            "y1": 550.94
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Carcassonne: A Medieval Fortress",
+      "page": 13,
+      "source": "safe1",
+      "confidence": 0.8899999856948853,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 250.89599609375,
+        "y2": 86.8080062866211,
+        "width": 178.89599609375,
+        "height": 14.784004211425781,
+        "area": 2644.79915965721
+      },
+      "subsections": [
+        {
+          "type": "h2",
+          "text": "History",
+          "page": 13,
+          "source": "safe2",
+          "confidence": 0.7048780918121338,
+          "position": {
+            "x0": 72.0,
+            "y0": 97.16,
+            "x1": 111.07,
+            "y1": 111.92
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": [
+            {
+              "type": "h3",
+              "text": "Cité de Carcassonne",
+              "page": 13,
+              "source": "safe2",
+              "confidence": 0.8896971940994263,
+              "position": {
+                "x0": 108.0,
+                "y0": 240.8,
+                "x1": 536.71,
+                "y1": 255.56
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Basilica of Saints Nazarius and Celsus",
+              "page": 13,
+              "source": "safe2",
+              "confidence": 0.8964089155197144,
+              "position": {
+                "x0": 108.0,
+                "y0": 300.14,
+                "x1": 510.61,
+                "y1": 314.9
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Château Comtal",
+              "page": 13,
+              "source": "safe2",
+              "confidence": 0.9519413113594055,
+              "position": {
+                "x0": 108.0,
+                "y0": 359.42,
+                "x1": 530.48,
+                "y1": 374.18
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Pont Vieux",
+              "page": 13,
+              "source": "safe2",
+              "confidence": 0.9409920573234558,
+              "position": {
+                "x0": 108.0,
+                "y0": 401.6,
+                "x1": 536.95,
+                "y1": 416.36
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Reenactments",
+              "page": 13,
+              "source": "safe2",
+              "confidence": 0.8846480846405029,
+              "position": {
+                "x0": 108.0,
+                "y0": 468.86,
+                "x1": 486.61,
+                "y1": 483.62
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Surrounding Area",
+              "page": 13,
+              "source": "safe2",
+              "confidence": 0.7690578699111938,
+              "position": {
+                "x0": 108.0,
+                "y0": 511.1,
+                "x1": 540.5,
+                "y1": 525.86
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            },
+            {
+              "type": "h3",
+              "text": "Carcassonne is known for its vibrant cultural scene, with numerous festivals and events",
+              "page": 13,
+              "source": "safe2",
+              "confidence": 0.5012458562850952,
+              "position": {
+                "x0": 72.0,
+                "y0": 578.36,
+                "x1": 507.55,
+                "y1": 593.12
+              },
+              "formatting": {
+                "font_size": 12.0,
+                "is_bold": false,
+                "is_italic": false,
+                "font_name": "AdobeClean-Regular"
+              }
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Key Attractions",
+          "page": 13,
+          "source": "safe2",
+          "confidence": 0.8613875508308411,
+          "position": {
+            "x0": 72.0,
+            "y0": 215.72,
+            "x1": 151.09,
+            "y1": 230.48
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        },
+        {
+          "type": "h2",
+          "text": "Cultural Highlights",
+          "page": 13,
+          "source": "safe2",
+          "confidence": 0.7096065282821655,
+          "position": {
+            "x0": 72.0,
+            "y0": 553.28,
+            "x1": 166.99,
+            "y1": 568.04
+          },
+          "formatting": {
+            "font_size": 12.0,
+            "is_bold": false,
+            "is_italic": false,
+            "font_name": "AdobeClean-Regular"
+          },
+          "h3_subsections": []
+        }
+      ]
+    },
+    {
+      "type": "h1",
+      "text": "Conclusion",
+      "page": 14,
+      "source": "safe1",
+      "confidence": 0.7485653758049011,
+      "bbox": {
+        "x1": 72.0,
+        "y1": 72.02400207519531,
+        "x2": 132.21600341796875,
+        "y2": 86.8080062866211,
+        "width": 60.21600341796875,
+        "height": 14.784004211425781,
+        "area": 890.2336481264792
+      },
+      "subsections": []
+    }
+  ]
+}

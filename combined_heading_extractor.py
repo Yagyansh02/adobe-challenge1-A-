@@ -333,7 +333,8 @@ class CombinedHeadingExtractor:
                 'page': titles[0]['page'],
                 'source': 'safe1',
                 'confidence': titles[0]['confidence'],
-                'sections': []
+                'sections': [],
+                'subsections': []
             }
             combined_structure.append(title_section)
         
@@ -651,26 +652,111 @@ class CombinedHeadingExtractor:
         print(f"   ✅ Promoted {promoted_count} orphaned H3s to H2s")
         return combined_result
     
+    def convert_to_flat_outline(self, combined_result: Dict) -> Dict:
+        """
+        Convert hierarchical structure to flat outline format as described in convert_to_outline.py.
+        
+        Args:
+            combined_result: Combined hierarchical results
+            
+        Returns:
+            Dict: Flat outline structure with title and outline array
+        """
+        # Extract title
+        title = ""
+        outline = []
+        
+        # Process hierarchical structure
+        for section in combined_result.get('hierarchical_structure', []):
+            if section['type'] == 'title':
+                title = section['text']
+            elif section['type'] == 'h1':
+                # Add H1 to outline
+                outline.append({
+                    "level": "H1",
+                    "text": section['text'],
+                    "page": section['page']
+                })
+                
+                # Process subsections (H2s and H3s)
+                for subsection in section.get('subsections', []):
+                    if subsection['type'] == 'h2':
+                        outline.append({
+                            "level": "H2", 
+                            "text": subsection['text'],
+                            "page": subsection['page']
+                        })
+                        
+                        # Process H3s under this H2
+                        for h3_sub in subsection.get('h3_subsections', []):
+                            outline.append({
+                                "level": "H3",
+                                "text": h3_sub['text'], 
+                                "page": h3_sub['page']
+                            })
+                    elif subsection['type'] == 'h3':
+                        # Direct H3 under H1 (no parent H2)
+                        outline.append({
+                            "level": "H3",
+                            "text": subsection['text'],
+                            "page": subsection['page']
+                        })
+        
+        # Create final flat outline structure
+        flat_outline = {
+            "title": title,
+            "outline": outline
+        }
+        
+        print(f"✅ Converted to flat outline format:")
+        print(f"   - Title: {title}")
+        print(f"   - Total outline items: {len(outline)}")
+        
+        # Count levels
+        level_counts = {}
+        for item in outline:
+            level = item['level']
+            level_counts[level] = level_counts.get(level, 0) + 1
+        
+        for level, count in sorted(level_counts.items()):
+            print(f"   - {level} headings: {count}")
+        
+        return flat_outline
+    
     def save_combined_results(self, combined_result: Dict, pdf_path: str) -> str:
         """
-        Save the combined results to a JSON file.
+        Save the combined results to JSON files (both hierarchical and flat outline formats).
         
         Args:
             combined_result: Combined hierarchical results
             pdf_path: Original PDF path
             
         Returns:
-            str: Path to saved file
+            str: Path to saved flat outline file
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_filename = f"combined_{Path(pdf_path).stem}_{timestamp}.json"
-        output_path = self.output_dir / output_filename
         
-        with open(output_path, 'w', encoding='utf-8') as f:
+        # Save hierarchical format (for reference)
+        hierarchical_filename = f"combined_hierarchical_{Path(pdf_path).stem}_{timestamp}.json"
+        hierarchical_path = self.output_dir / hierarchical_filename
+        
+        with open(hierarchical_path, 'w', encoding='utf-8') as f:
             json.dump(combined_result, f, indent=2, ensure_ascii=False)
         
-        print(f"\n💾 Combined results saved to: {output_path}")
-        return str(output_path)
+        print(f"\n💾 Hierarchical results saved to: {hierarchical_path}")
+        
+        # Convert to flat outline format
+        flat_outline = self.convert_to_flat_outline(combined_result)
+        
+        # Save flat outline format (main output)
+        outline_filename = f"combined_{Path(pdf_path).stem}_{timestamp}.json"
+        outline_path = self.output_dir / outline_filename
+        
+        with open(outline_path, 'w', encoding='utf-8') as f:
+            json.dump(flat_outline, f, indent=2, ensure_ascii=False)
+        
+        print(f"💾 Flat outline saved to: {outline_path}")
+        return str(outline_path)
     
     def process_pdf(self, pdf_path: str) -> str:
         """
@@ -704,7 +790,7 @@ class CombinedHeadingExtractor:
             print("=" * 80)
             print(f"✅ Successfully processed: {Path(pdf_path).name}")
             print(f"📁 All outputs saved in: {self.output_dir}")
-            print(f"🔗 Combined result: {output_path}")
+            print(f"🔗 Main output (flat outline): {output_path}")
             
             return output_path
             
