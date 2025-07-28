@@ -1,0 +1,42 @@
+# Exclude unnecessary files from Docker build context
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.git/
+.gitignore
+.vscode/
+.idea/
+*.md
+!README.md
+
+# Exclude test files and outputs
+test_*.py
+**/output/
+output/
+combined_output/
+test_output/
+final_combined_output/
+improved_combined_output/
+
+# Exclude Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Exclude dataset files that aren't needed for inference
+safe2/merged_labeled_dataset.csv
+safe2/pdf_text_classification.ipynb
+safe2/pdf_text_classifier_xgboost.ipynb
+
+# Exclude test PDFs (keep only models)
+safe1/*.pdf
+safe2/*.pdf
+
+# Exclude temporary and cache files
+*.log
+*.tmp
+temp/
+.DS_Store
+Thumbs.db
